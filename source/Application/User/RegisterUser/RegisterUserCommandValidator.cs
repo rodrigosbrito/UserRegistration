@@ -1,9 +1,4 @@
 ﻿using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.User.RegisterUser
 {
@@ -11,10 +6,10 @@ namespace Application.User.RegisterUser
     {
         public RegisterUserCommandValidator()
         {
-            RuleFor(command => command.Name).NotEmpty();
-            RuleFor(command => command.Email).NotEmpty().EmailAddress();
-            RuleFor(command => command.Login).NotEmpty();
-            RuleFor(command => command.Password).NotEmpty();
+            RuleFor(command => command.Name).NotEmpty().WithMessage("Name is empty.");
+            RuleFor(command => command.Email).NotEmpty().EmailAddress().WithMessage("Email is incorrect.");
+            RuleFor(command => command.Login).NotEmpty().WithMessage("Login is empty.");
+            RuleFor(command => command.Password).NotEmpty().WithMessage("Password is empty.");
         }
     }
 }

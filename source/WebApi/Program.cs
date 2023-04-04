@@ -1,9 +1,6 @@
 using Application;
 using Infrastructure;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.OpenApi.Models;
-using WebApi.AutoMapper;
-using static System.Net.Mime.MediaTypeNames;
 
 var builder = WebApplication.CreateBuilder(args);
 
