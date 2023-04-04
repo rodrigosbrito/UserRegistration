@@ -15,6 +15,7 @@ The goal is to evolve this code more and more.
 - Entity Framework Core
 - SQL Server
 - CQRS
+- Fail Fast (FluentValidation)
 - Result Pattern
 - Clean architecture
 - Password with Salt (Security for store password in Database)
