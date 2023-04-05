@@ -1,5 +1,7 @@
  
 # Sample User Registration
+[![.NET Build](https://github.com/rodrigosbrito/UserRegistration/actions/workflows/build.yml/badge.svg)](https://github.com/rodrigosbrito/UserRegistration/actions/workflows/build.yml)
+
 This is an example of user registration using clean architecture and some principles I learned in the last few days.
 
 The goal is to evolve this code more and more.
