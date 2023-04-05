@@ -1,6 +1,9 @@
 ﻿using Domain.Interfaces;
+using Infrastructure.Authentication;
 using Infrastructure.AuthUser;
 using Infrastructure.Context;
+using Infrastructure.Jwt;
+using Infrastructure.Security;
 using Infrastructure.User;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -25,6 +28,11 @@ namespace Infrastructure
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IAuthUserRepository, AuthUserRepository>();
+
+            services.AddSingleton<IJwtProvider, JwtProvider>();
+            services.Configure<JwtOptions>(configuration.GetSection("Jwt"));
+
+            services.AddSingleton<ICryptographyService, CryptographyService>();
 
             return services;
         }

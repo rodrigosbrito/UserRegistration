@@ -1,15 +1,8 @@
-﻿using Application.Jwt;
-using Application.User.RegisterUser;
-using Domain.Interfaces;
-using Domain.Shared;
+﻿using Domain.Shared;
 using Infrastructure.AuthUser;
-using Infrastructure.User;
+using Infrastructure.Jwt;
+using Infrastructure.Security;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.AuthUser
 {
@@ -18,11 +11,13 @@ namespace Application.AuthUser
     {
         private readonly IAuthUserRepository _authRepository;
         private readonly IJwtProvider _jwtProvider;
+        private readonly ICryptographyService _cryptographyService;
 
-        public LoginCommandHandler(IAuthUserRepository authRepository, IJwtProvider jwtProvider)
+        public LoginCommandHandler(IAuthUserRepository authRepository, IJwtProvider jwtProvider, ICryptographyService cryptographyService)
         {
             _authRepository = authRepository;
             _jwtProvider = jwtProvider;
+            _cryptographyService = cryptographyService;
         }
 
         public async Task<Result<string>> Handle(LoginCommand command
@@ -40,7 +35,7 @@ namespace Application.AuthUser
 
             if (authUser is null) { return Result<string>.Failure("Invalid Credentials."); }
 
-            var hashedPassword = PasswordSaltHelper.CreatePasswordWithSalt(command.Password, authUser.Salt.ToString());
+            var hashedPassword = _cryptographyService.GenerateHashPassword(command.Password, authUser.Salt.ToString());
 
             var isValidPassword = authUser.Password == hashedPassword;
 

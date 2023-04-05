@@ -1,4 +1,4 @@
-﻿namespace Application.Jwt
+﻿namespace Infrastructure.Jwt
 {
     public interface IJwtProvider
     {

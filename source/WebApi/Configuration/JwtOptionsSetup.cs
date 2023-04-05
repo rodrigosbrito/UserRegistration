@@ -1,4 +1,4 @@
-﻿using Application.Authentication;
+﻿using Infrastructure.Authentication;
 using Microsoft.Extensions.Options;
 
 namespace WebApi.Configuration

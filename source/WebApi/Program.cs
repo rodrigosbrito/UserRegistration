@@ -15,7 +15,7 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 builder.Services
-    .AddApplication(configuration)
+    .AddApplication()
     .AddInfrastructure(configuration);
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
