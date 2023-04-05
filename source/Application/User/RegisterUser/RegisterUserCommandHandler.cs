@@ -1,6 +1,4 @@
-﻿using Azure.Core;
-using Domain.Entities;
-using Domain.Interfaces;
+﻿using Domain.Interfaces;
 using Domain.Shared;
 using Infrastructure.AuthUser;
 using Infrastructure.User;
@@ -23,8 +21,7 @@ namespace Application.User.RegisterUser
             _userRepository = userRepository;
             _unitOfWork = unitOfWork;
         }
-
-        
+                
         public async Task<Result<Guid>> Handle(RegisterUserCommand command, CancellationToken cancellationToken)
         {
             var validationResult = new RegisterUserCommandValidator().Validate(command);
@@ -32,7 +29,7 @@ namespace Application.User.RegisterUser
             if (!validationResult.IsValid)
             {
                 var errors = validationResult.Errors.Select(e => e.ErrorMessage).ToList();
-                return Result<Guid>.Failure("One or more errors.1");
+                return Result<Guid>.Failure(errors);
             }
 
             if (!await _userRepository.EmailExistsAsync(command.Email)) return Result<Guid>.Failure("EmailExists");
@@ -41,7 +38,7 @@ namespace Application.User.RegisterUser
 
             var user = new Domain.Entities.User(command.Name, command.Email);
 
-            var authUser = new AuthUser(command.Login, command.Password, user);
+            var authUser = new Domain.Entities.AuthUser(command.Login, command.Password, user);
 
             var passwordSalt = PasswordSaltHelper.CreatePasswordWithSalt(authUser.Password, authUser.Salt.ToString());
             authUser.UpdatePassword(passwordSalt);

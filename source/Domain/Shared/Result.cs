@@ -27,7 +27,7 @@
         public static new Result<T> Success(T value) => new(ResultType.Success, null, null, value);
 
         public static new Result<T> Failure(string error) => new(ResultType.Failure, null, new List<string> { error }, default);
-
+        public static new Result<T> Failure(List<string> errors) => new(ResultType.Failure, null, errors, default);
         public Result<TU> Convert<TU>() => new(Type, Message, Errors, (TU)(object)Value);
     }
 }
