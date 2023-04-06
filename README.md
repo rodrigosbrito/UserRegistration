@@ -1,6 +1,7 @@
  
 # .NET 7 Sample User Registration and Authentication with JWT
 [![.NET Build](https://github.com/rodrigosbrito/UserRegistration/actions/workflows/build.yml/badge.svg)](https://github.com/rodrigosbrito/UserRegistration/actions/workflows/build.yml)
+
 This is an example of user registration using clean architecture and some principles I learned in the last few days. Additionally, this authentication feature uses JWT in .NET 7 with SQL Server and is connected to the user registration example in my repositories.
 
 The goal is to evolve this code more and more.
