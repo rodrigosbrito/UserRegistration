@@ -10,9 +10,9 @@ namespace WebApi.Controllers
     public sealed class UserController : BaseController
     {
         [HttpPost]
-        public async Task<IActionResult> RegisterUser(RegisterUserCommand command)
+        public async Task<IActionResult> RegisterUser(RegisterUserCommand command, CancellationToken cancellationToken)
         {
-            var result = await Mediator.Send(command);
+            var result = await Mediator.Send(command, cancellationToken);
 
             if (result.IsSuccess)
                 return Ok(new { userId = result.Value });
@@ -22,9 +22,9 @@ namespace WebApi.Controllers
 
         [HttpPost]
         [Route("auth")]
-        public async Task<IActionResult> Login(LoginCommand command)
+        public async Task<IActionResult> Login(LoginCommand command, CancellationToken cancellationToken)
         {
-            var result = await Mediator.Send(command);
+            var result = await Mediator.Send(command, cancellationToken);
 
             if (result.IsSuccess)
                 return Ok(new { token = result.Value });
@@ -34,7 +34,7 @@ namespace WebApi.Controllers
 
         [HttpGet("{id:guid}")]
         [Authorize]
-        public async Task<IActionResult> GetUserById(Guid id)
+        public async Task<IActionResult> GetUserById(Guid id, CancellationToken cancellationToken)
         {
             return true ? Ok() : NotFound();
         }
