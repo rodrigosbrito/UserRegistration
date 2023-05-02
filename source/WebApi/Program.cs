@@ -1,7 +1,9 @@
 using Application;
 using Infrastructure;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.SwaggerGen;
 using WebApi.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +15,7 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "User Registration API", Version = "v1" });
 });
+builder.Services.AddTransient<IConfigureOptions<SwaggerGenOptions>, SwaggerOptionsSetup>();
 
 builder.Services
     .AddApplication()
@@ -23,6 +26,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.ConfigureOptions<JwtOptionsSetup>();
 builder.Services.ConfigureOptions<JwtBearerOptionsSetup>();
+
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
@@ -40,13 +45,13 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-app.MapControllers();
-
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
 
 app.UseAuthorization();
+
+app.MapControllers();
 
 app.Run();
 

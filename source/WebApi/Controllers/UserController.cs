@@ -1,4 +1,5 @@
 ﻿using Application.AuthUser;
+using Application.User.Get;
 using Application.User.RegisterUser;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,6 +11,7 @@ namespace WebApi.Controllers
     public sealed class UserController : BaseController
     {
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> RegisterUser(RegisterUserCommand command, CancellationToken cancellationToken)
         {
             var result = await Mediator.Send(command, cancellationToken);
@@ -29,14 +31,20 @@ namespace WebApi.Controllers
             if (result.IsSuccess)
                 return Ok(new { token = result.Value });
 
-            return BadRequest(result.Errors);
+            return Unauthorized(result.Errors);
         }
 
-        [HttpGet("{id:guid}")]
         [Authorize]
+        [HttpGet]
+        [Route("{id:guid}")]
         public async Task<IActionResult> GetUserById(Guid id, CancellationToken cancellationToken)
         {
-            return true ? Ok() : NotFound();
+            var result = await Mediator.Send(new GetUserQuery(id), cancellationToken);
+
+            if (result.IsSuccess)
+                return Ok(new { user = result.Value });
+
+            return BadRequest(result.Errors);
         }
     }
 }
