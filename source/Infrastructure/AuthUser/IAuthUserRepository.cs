@@ -2,8 +2,8 @@
 {
     public interface IAuthUserRepository
     {
-        Task<bool> LoginExistsAsync(string login);
-        Task<Domain.Entities.AuthUser> GetByEmailOrLogin(string login);
-        Task AddAsync(Domain.Entities.AuthUser authUser);
+        Task<bool> LoginExistsAsync(string login, CancellationToken cancellationToken);
+        Task<Domain.Entities.AuthUser> GetByEmailOrLogin(string login, CancellationToken cancellationToken);
+        Task AddAsync(Domain.Entities.AuthUser authUser, CancellationToken cancellationToken);
     }
 }

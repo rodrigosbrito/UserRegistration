@@ -6,7 +6,7 @@ using System.Text;
 
 namespace WebApi.Configuration
 {
-    public sealed class JwtBearerOptionsSetup : IConfigureOptions<JwtBearerOptions>
+    public sealed class JwtBearerOptionsSetup : IConfigureNamedOptions<JwtBearerOptions>
     {
         private readonly JwtOptions _jwtOptions;
 
@@ -15,7 +15,11 @@ namespace WebApi.Configuration
             _jwtOptions = jwtOptions.Value;
         }
 
-        public void Configure(JwtBearerOptions options)
+        public void Configure(JwtBearerOptions options) => GenerateBearerTokenValidationParameters(options);
+
+        public void Configure(string? name, JwtBearerOptions options) => GenerateBearerTokenValidationParameters(options);
+
+        private void GenerateBearerTokenValidationParameters(JwtBearerOptions options) 
         {
             options.TokenValidationParameters = new()
             {

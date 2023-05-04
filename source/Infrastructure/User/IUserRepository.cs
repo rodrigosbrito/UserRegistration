@@ -1,10 +1,12 @@
-﻿namespace Infrastructure.User
+﻿using Domain.Model;
+
+namespace Infrastructure.User
 {
     public interface IUserRepository
     {
-        Task<bool> EmailExistsAsync(string email);
-        Task AddAsync(Domain.Entities.User user);
-        Task<Domain.Entities.User> GetByIdAsync(int id);
-        Task<Domain.Entities.User> GetByEmailAsync(string email);
+        Task<bool> EmailExistsAsync(string email, CancellationToken cancellationToken);
+        Task AddAsync(Domain.Entities.User user, CancellationToken cancellationToken);
+        Task<UserModel> GetAsync(Guid id, CancellationToken cancellationToken);
+        Task<UserModel> GetByEmailAsync(string email, CancellationToken cancellationToken);
     }
 }

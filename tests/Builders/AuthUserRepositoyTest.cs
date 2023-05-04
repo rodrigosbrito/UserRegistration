@@ -28,7 +28,7 @@ namespace Test.AuthUser.Repositories
         [Fact]
         public async Task GetByEmailOrLogin_ExistingLogin_ReturnsAuthUser()
         {
-            var result = await _authUserRepository.GetByEmailOrLogin("existinglogin");
+            var result = await _authUserRepository.GetByEmailOrLogin("existinglogin", new CancellationToken());
 
             Assert.NotNull(result);
             Assert.Equal("existinglogin", result.Login);
@@ -37,7 +37,7 @@ namespace Test.AuthUser.Repositories
         [Fact]
         public async Task GetByEmailOrLogin_ExistingEmail_ReturnsAuthUser()
         {
-            var result = await _authUserRepository.GetByEmailOrLogin("existingemail@example.com");
+            var result = await _authUserRepository.GetByEmailOrLogin("existingemail@example.com", new CancellationToken());
 
             Assert.NotNull(result);
             Assert.Equal("existingemail@example.com", result.User.Email);
@@ -46,7 +46,7 @@ namespace Test.AuthUser.Repositories
         [Fact]
         public async Task GetByEmailOrLogin_NonExistingLoginAndEmail_ReturnsNull()
         {
-            var result = await _authUserRepository.GetByEmailOrLogin("nonexistinglogin");
+            var result = await _authUserRepository.GetByEmailOrLogin("nonexistinglogin", new CancellationToken());
 
             Assert.Null(result);
         }

@@ -36,9 +36,9 @@ namespace Application.User.RegisterUser
                 return Result<Guid>.Failure(errors);
             }
 
-            if (!await _userRepository.EmailExistsAsync(command.Email)) return Result<Guid>.Failure("EmailExists");
+            if (await _userRepository.EmailExistsAsync(command.Email, cancellationToken)) return Result<Guid>.Failure("EmailExists");
 
-            if (!await _authRepository.LoginExistsAsync(command.Login)) return Result<Guid>.Failure("LoginExists");
+            if (await _authRepository.LoginExistsAsync(command.Login, cancellationToken)) return Result<Guid>.Failure("LoginExists");
 
             var user = new Domain.Entities.User(command.Name, command.Email);
 
@@ -47,9 +47,9 @@ namespace Application.User.RegisterUser
             var passwordSalt = _cryptographyService.GenerateHashPassword(authUser.Password, authUser.Salt.ToString());
             authUser.UpdatePassword(passwordSalt);
             
-            await _userRepository.AddAsync(user);
+            await _userRepository.AddAsync(user, cancellationToken);
 
-            await _authRepository.AddAsync(authUser);
+            await _authRepository.AddAsync(authUser, cancellationToken);
 
             await _unitOfWork.SaveChangesAsync(cancellationToken);
 

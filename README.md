@@ -27,4 +27,5 @@ The goal is to evolve this code more and more.
 - Clean architecture
 - TDD - xUnit
 - Password with Salt (Security for store password in Database)
+- Serilog
 

@@ -31,7 +31,7 @@ namespace Application.AuthUser
                 return Result<string>.Failure(errors);
             }
 
-            var authUser = await _authRepository.GetByEmailOrLogin(command.Login);
+            var authUser = await _authRepository.GetByEmailOrLogin(command.Login, cancellationToken);
 
             if (authUser is null) { return Result<string>.Failure("Invalid Credentials."); }
 
