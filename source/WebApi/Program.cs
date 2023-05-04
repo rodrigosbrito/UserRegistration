@@ -1,10 +1,14 @@
 using Application;
+using Application.Behaviors;
 using Infrastructure;
+using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using Serilog;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using WebApi.Configuration;
+using WebApi.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -16,6 +20,13 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "User Registration API", Version = "v1" });
 });
 builder.Services.AddTransient<IConfigureOptions<SwaggerGenOptions>, SwaggerOptionsSetup>();
+builder.Services.AddTransient<GlobalExceptionHandlerMiddleware>();
+builder.Services.AddScoped(
+    typeof(IPipelineBehavior<,>), 
+    typeof(LoggingPipelineBehavior<,>));
+
+builder.Host.UseSerilog((context, configuration) =>
+    configuration.ReadFrom.Configuration(context.Configuration));
 
 builder.Services
     .AddApplication()
@@ -45,11 +56,15 @@ if (app.Environment.IsDevelopment())
     });
 }
 
+app.UseSerilogRequestLogging();
+
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
 
 app.UseAuthorization();
+
+app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
 
 app.MapControllers();
 
