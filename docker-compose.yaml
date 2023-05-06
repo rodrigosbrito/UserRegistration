@@ -1,0 +1,40 @@
+version: "3.7"
+services:
+    web:
+        image: ur/web
+        container_name: ur_web
+        restart: always
+        build:
+            context: .
+            dockerfile: ./dockerfile
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+            - DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
+            - Jwt__Issuer=UserRegistration
+            - Jwt__Audience=UserRegistration
+            - Jwt__SecretKey=xbZk8uHjiLfpcajw0lDuTv4OCYuBHGnTD2Td60KS
+            - ConnectionStrings__UserDatabase=Server=ur_database;Database=UserRegistration;User Id=sa;Password=P4ssW0rd!;TrustServerCertificate=true;
+            - Serilog__WriteTo__1__Args__path=/app/logs/
+        depends_on:
+            - database
+        networks:
+            - network
+        ports:
+            - 8081:80
+    database:
+        image: mcr.microsoft.com/mssql/server
+        container_name: ur_database
+        restart: always
+        environment:
+            - ACCEPT_EULA=Y
+            - SA_PASSWORD=P4ssW0rd!
+        networks:
+            - network
+        ports:
+            - 1450:1433
+        volumes:
+            - D:\Git\volumes\mssql:/var/opt/mssql/data
+networks:
+    network:
+volumes:
+    database:

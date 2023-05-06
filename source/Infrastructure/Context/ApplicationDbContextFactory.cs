@@ -7,7 +7,7 @@ namespace Infrastructure.Context
     {
         public ApplicationDbContext CreateDbContext(string[] args)
         {
-            const string connectionString = "Server=(localdb)\\MSSQLLocalDB;Database=UserRegistration;";
+            const string connectionString = "Server=ur_database;Database=UserRegistration;";
 
             return new ApplicationDbContext(new DbContextOptionsBuilder<ApplicationDbContext>().UseSqlServer(connectionString).Options);
         }
