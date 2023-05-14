@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System.Net;
 using System.Text.Json;
 
-namespace WebApi.Middleware
+namespace WebApi.Core.Middleware
 {
     public sealed class GlobalExceptionHandlerMiddleware : IMiddleware
     {

@@ -1,5 +1,7 @@
-﻿using Application.User.RegisterUser;
+﻿using Application.Behaviors;
+using Application.User.RegisterUser;
 using FluentValidation;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Application
@@ -13,6 +15,10 @@ namespace Application
             services.AddMediatR(configuration =>
                 configuration.RegisterServicesFromAssembly(assembly));
             services.AddValidatorsFromAssembly(typeof(RegisterUserCommandValidator).Assembly);
+
+            services.AddScoped(
+                typeof(IPipelineBehavior<,>),
+                typeof(LoggingPipelineBehavior<,>));
 
             return services;
 
