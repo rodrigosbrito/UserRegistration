@@ -5,9 +5,12 @@ using Infrastructure.Context;
 using Infrastructure.Jwt;
 using Infrastructure.Security;
 using Infrastructure.User;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Serilog;
 
 namespace Infrastructure
 {
@@ -23,7 +26,7 @@ namespace Infrastructure
                        .EnableDetailedErrors());
 
             services.BuildServiceProvider().GetService<ApplicationDbContext>()
-                .Database.EnsureCreated();
+                .Database.EnsureCreated();            
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IUserRepository, UserRepository>();
@@ -34,7 +37,20 @@ namespace Infrastructure
 
             services.AddSingleton<ICryptographyService, CryptographyService>();
 
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer();
+
+            services.AddAuthorization();
+
             return services;
+        }
+
+        public static void UseInfrastructure(this IApplicationBuilder app, IConfiguration configuration) 
+        {
+            app.UseSerilogRequestLogging();
+            
+            app.UseAuthentication();
+            app.UseAuthorization();
         }
     }
 }

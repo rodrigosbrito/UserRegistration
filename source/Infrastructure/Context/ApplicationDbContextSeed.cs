@@ -21,8 +21,8 @@ namespace Infrastructure.Context
             {
                 Id = Guid.NewGuid(),
                 Login = "admin",
-                Password = "O34uMN1Vho2IYcSM7nlXEqn57RZ8VEUsJwH++sFr0i3MSHJVx8J3PQGjhLR3s5i4l0XWUnCnymQ/EbRmzvLy8uMWREZu7vZI+BqebjAl5upYKMMQvlEcBeyLcRRTTBpYpv80m/YCZQmpig4XFVfIViLLZY/Kr5gBN5dkQf25rK+u88gtSXAyPDkW+hVS+dW4AmxrnaNFZks0Zzcd5xlb12wcF/q96cc4htHFzvOH9jtN98N5EBIXSvdUVnFc9kBuRTVytATZA7gITbs//hkxvNQ3eody5U9hjdH6D+AP0vVt5unZlTZ+gInn8Ze7AC5o6mn0Y3ylGO1CBJSHU9c/BcFY9oknn+XYk9ySCoDGctMqDbvOBcvSTBkKcrCzev2KnX7xYmC3yNz1Q5oPVKgnq4mc1iuldMlCxse/IDGMJB2FRdTCLV5KNS4IZ1GB+dw3tMvcEEtmXmgT2zKN5+kUkOxhlv5g1ZLgXzWjVJeKb5uZpsn3WK5kt8T+kzMoxHd5i8HxsU2uvy9GopxAnaV0WNsBPqTGkRllSxARl4ZN3hJqUla553RT49tJxbs+N03OmkYhjq+L0aKJ1AC+7G+rdjegiAQZB+3mdE7a2Pne2kYtpMoCmNMKdm9jOOVpfXJqZMQul9ltJSlAY6LPrHFUB3mw61JBNzx+sZgYN29GfDY=",
-                Salt = new Guid("79005744-e69a-4b09-996b-08fe0b70cbb9"),
+                Password = "0/Wuq+GXbdWaYjWczfhh+eGp44gr55gHwk5eSn/PkOaFSbVa73zSnQBKwLA6ZLipxylj2F2bq5hcjtoNT0tQn1r8ep9opGCaO+GW9Ja8tIhYR/GI3etahHJ25iQiF1v+dC6orTjVBJToWQCxrS9WnCKe3YLsQjuAhO3dN8Mw4eUiJ2DFsYgGunUWOIM4ZrWtbXurtHlaWW2fv5AgmZZ9uBP/O3oQSvbqOwtN7P7/9d07K/Gxxpe6kK/joTD+OSgeN/RctLhlk9Oc+dgQF+oTeT3RPmtyw1Ir3M8aJh2sK0AIbqw8ccsfRfIGWJ4h/YhtXsLBLv1qWR6e3WeJaxw79lTvBHRrxgnkHcokpnNtlNnlGpBgkw5TLbM76fQaiHOU8pAu0yHGTYwlcreA6p5f0c9pPmq+tpPRuhnCaO+2aaoNQRmx3thZRHA1/8AYcNdEWJ1xryBNara3jhPh6o+UNCYu5Vx6a942LqeJ21VUKeQdo39JXZJxopQuPnS/Dsdl7fsOQkECkOYUPZDJUJ3iP2Io4vZSt4ThbZIllw4gzaV+OOsCmVeZ4/JhmvDWVG/IxYueaIHpBvHoNqz4gUFtpSSv37+dxlh+rVbXtDdSVNOe3ART2U6zcMQoJfBBc9w8OBFXB/fuCcUKpjGu2Z/yjm6Nw8hq63k3VfR3DbZqtVw=",
+                Salt = new Guid("f9e35b06-d292-4546-aabc-0aa33121b4ec"),
                 Roles = Roles.User | Roles.Admin,
                 UserId = idUser
             }));
