@@ -33,14 +33,8 @@ namespace UserRegistration.Infrastructure
             services.AddScoped<IAuthUserRepository, AuthUserRepository>();
 
             services.AddSingleton<IJwtProvider, JwtProvider>();
-            services.Configure<JwtOptions>(configuration.GetSection("Jwt"));
 
             services.AddSingleton<ICryptographyService, CryptographyService>();
-
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer();
-
-            services.AddAuthorization();
 
             return services;
         }
@@ -48,9 +42,6 @@ namespace UserRegistration.Infrastructure
         public static void UseInfrastructure(this IApplicationBuilder app, IConfiguration configuration) 
         {
             app.UseSerilogRequestLogging();
-            
-            app.UseAuthentication();
-            app.UseAuthorization();
         }
     }
 }

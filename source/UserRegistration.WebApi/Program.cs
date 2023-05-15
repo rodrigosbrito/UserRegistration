@@ -8,11 +8,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.AddSerilog(builder.Configuration, builder.Environment);
 Log.Information($"Starting {builder.Environment.ApplicationName}");
 
-builder.Services.AddApiConfiguration();
-
 builder.Services
     .AddApplication()
     .AddInfrastructure(builder.Configuration);
+
+builder.Services.AddApiConfiguration(builder.Configuration);
 
 builder.Services.AddElasticsearch(builder.Configuration);
 builder.Services.AddSwagger(builder.Configuration);
