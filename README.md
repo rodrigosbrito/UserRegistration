@@ -30,7 +30,7 @@ The goal is to evolve this code more and more.
 ![App Screenshot](https://github.com/rodrigosbrito/UserRegistration/blob/main/docs/Authentication.jpg?raw=true)
 
 ## A little bit of Observability
-![App Screenshot](https://github.com/rodrigosbrito/UserRegistration/blob/main/docs/elastic_apm_containers.png?raw=true)
+![App Screenshot](https://github.com/rodrigosbrito/UserRegistration/blob/main/docs/elastic_apm_containers.PNG?raw=true)
 The image displayed above illustrates the containerization of Elastic APM, an application performance monitoring tool that offers real-time performance insights for applications. Elasticsearch, a distributed search and analytics engine, facilitates efficient storage and search of large datasets. Kibana, a data visualization tool, provides comprehensive data exploration and analysis features.
 
 All three services were instantiated using Docker Compose. The following command can be used to launch the containers from the root directory of the docker-compose.yml file:
