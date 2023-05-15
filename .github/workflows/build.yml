@@ -21,8 +21,8 @@ jobs:
         global-json-file: source/global.json
         
     - name: Restore dependencies
-      run: dotnet restore source/WebApi/WebApi.csproj
+      run: dotnet restore source/UserRegistration.WebApi/UserRegistration.WebApi.csproj
     - name: Build
-      run: dotnet build source/WebApi/WebApi.csproj --no-restore
+      run: dotnet build source/UserRegistration.WebApi/UserRegistration.WebApi.csproj --no-restore
     - name: Test
-      run: dotnet test source/WebApi/WebApi.csproj --no-build --verbosity normal
+      run: dotnet test source/UserRegistration.WebApi/UserRegistration.WebApi.csproj --no-build --verbosity normal

@@ -1,4 +1,4 @@
-﻿namespace Test.Builders
+﻿namespace UserRegistration.Test.Builders
 {
     public sealed class UserBuilder
     {
@@ -12,7 +12,7 @@
             return this;
         }
 
-        public Domain.Entities.User Build()
-            => new Domain.Entities.User(_name, _email);
+        public UserRegistration.Domain.Entities.User Build()
+            => new UserRegistration.Domain.Entities.User(_name, _email);
     }
 }

@@ -1,7 +1,7 @@
-﻿using Infrastructure.Context;
+﻿using UserRegistration.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace Test.Builders
+namespace UserRegistration.Test.Builders
 {
     public class InMemoryDbBuilder
     {

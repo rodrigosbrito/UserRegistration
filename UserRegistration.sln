@@ -5,19 +5,19 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "source", "source", "{C8301038-041D-476E-84B8-59066A201E00}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "source\Domain\Domain.csproj", "{E8B0B529-56C4-48A4-8E86-40DFB42FA283}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserRegistration.Domain", "source\UserRegistration.Domain\UserRegistration.Domain.csproj", "{E8B0B529-56C4-48A4-8E86-40DFB42FA283}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "source\Application\Application.csproj", "{ECB191FF-5664-41D4-9ECB-498A3BC7297B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserRegistration.Application", "source\UserRegistration.Application\UserRegistration.Application.csproj", "{ECB191FF-5664-41D4-9ECB-498A3BC7297B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "source\Infrastructure\Infrastructure.csproj", "{56E6A0C7-87AD-4A1C-B61B-554A34B9746C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserRegistration.Infrastructure", "source\UserRegistration.Infrastructure\UserRegistration.Infrastructure.csproj", "{56E6A0C7-87AD-4A1C-B61B-554A34B9746C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "source\WebApi\WebApi.csproj", "{F3554DEA-979A-4412-94F0-CC05F8E055E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserRegistration.WebApi", "source\UserRegistration.WebApi\UserRegistration.WebApi.csproj", "{F3554DEA-979A-4412-94F0-CC05F8E055E0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{1EBDAA24-17CF-4C5B-B2ED-7136F502E4AD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "tests\Test.csproj", "{7AB69B5A-56B6-42CB-A84D-C2BA79E41704}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserRegistration.Test", "tests\UserRegistration.Test.csproj", "{7AB69B5A-56B6-42CB-A84D-C2BA79E41704}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.Core", "source\WebApi.Core\WebApi.Core.csproj", "{39BE9321-F133-4A2A-945B-C8082335CE21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserRegistration.WebApi.Core", "source\UserRegistration.WebApi.Core\UserRegistration.WebApi.Core.csproj", "{39BE9321-F133-4A2A-945B-C8082335CE21}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{146BFF13-538A-4496-AEE5-945A2171A838}"
 EndProject

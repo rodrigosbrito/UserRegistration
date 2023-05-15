@@ -1,12 +1,12 @@
-﻿using Domain.Entities;
+﻿using UserRegistration.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Test.Builders;
+using UserRegistration.Test.Builders;
 
-namespace Test.AuthUser.Repositories
+namespace UserRegistration.Test.AuthUser.Repositories
 {
     public sealed class AuthUserBuilder
     {
@@ -23,7 +23,7 @@ namespace Test.AuthUser.Repositories
             return this;
         }
 
-        public Domain.Entities.AuthUser Build()
-            => new Domain.Entities.AuthUser(_login, _password, _user);
+        public UserRegistration.Domain.Entities.AuthUser Build()
+            => new UserRegistration.Domain.Entities.AuthUser(_login, _password, _user);
     }
 }

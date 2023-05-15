@@ -1,8 +1,8 @@
-﻿using Infrastructure.AuthUser;
-using Infrastructure.Context;
-using Test.Builders;
+﻿using UserRegistration.Infrastructure.AuthUser;
+using UserRegistration.Infrastructure.Context;
+using UserRegistration.Test.Builders;
 
-namespace Test.AuthUser.Repositories
+namespace UserRegistration.Test.AuthUser.Repositories
 {
     public class AuthUserRepositoyTest : IDisposable
     {
