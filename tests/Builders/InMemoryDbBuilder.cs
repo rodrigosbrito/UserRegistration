@@ -13,10 +13,10 @@ namespace UserRegistration.Test.Builders
             return this;
         }
 
-        public ApplicationDbContext Build()
+        public ApplicationDbContext Build(string databaseName = "UserRegistrationTest")
         {
             var options = new DbContextOptionsBuilder<ApplicationDbContext>()
-                .UseInMemoryDatabase(databaseName: "UserRegistrationTest")
+                .UseInMemoryDatabase(databaseName: databaseName)
                 .Options;
 
             var context = new ApplicationDbContext(options);
@@ -28,5 +28,6 @@ namespace UserRegistration.Test.Builders
 
             return context;
         }
+
     }
 }

@@ -12,7 +12,7 @@
             return this;
         }
 
-        public UserRegistration.Domain.Entities.User Build()
-            => new UserRegistration.Domain.Entities.User(_name, _email);
+        public Domain.Entities.User Build()
+            => new Domain.Entities.User(_name, _email);
     }
 }
