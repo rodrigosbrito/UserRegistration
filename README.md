@@ -24,7 +24,7 @@ The goal is to evolve this code more and more.
 - Observability with Elastic APM (ElasticSearch and Kibana)
 
 ## User Registration Workflow
-![App Screenshot](https://github.com/rodrigosbrito/UserRegistration/blob/main/docs/UserRegistration.jpg)
+![App Screenshot](https://github.com/rodrigosbrito/UserRegistration/blob/main/docs/User%20Registration.jpg?raw=true)
 
 ## Authentication Workflow
 ![App Screenshot](https://github.com/rodrigosbrito/UserRegistration/blob/main/docs/Authentication.jpg?raw=true)
